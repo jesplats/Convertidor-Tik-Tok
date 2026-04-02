@@ -1,12 +1,7 @@
 import { useApp } from "../context/AppContext";
 
 function Preview() {
-  const {
-    data,
-    descargarArchivo,
-    reiniciar,
-    textos,
-  } = useApp();
+  const { data, descargarArchivo, reiniciar, textos, idioma } = useApp();
 
   return (
     <div>
@@ -29,7 +24,7 @@ function Preview() {
             <button
               className="btn video"
               onClick={() =>
-                descargarArchivo(data.play, "video.mp4")
+                descargarArchivo(data.play, data.title + ".mp4")
               }
             >
               {textos.descargarVideo}
@@ -38,7 +33,7 @@ function Preview() {
             <button
               className="btn audio"
               onClick={() =>
-                descargarArchivo(data.music, "audio.mp3")
+                descargarArchivo(data.music, data.title + ".mp3")
               }
             >
               {textos.descargarAudio}

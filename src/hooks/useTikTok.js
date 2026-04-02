@@ -1,4 +1,5 @@
 import { useState } from "react";
+//import textos from "./textos"; 
 
 export function useTikTok(textos, idioma) {
   const [url, setUrl] = useState("");
@@ -46,19 +47,30 @@ export function useTikTok(textos, idioma) {
     }
   };
 
-  const descargarArchivo = async (url, nombre) => {
-    try {
-      const response = await fetch(url);
-      const blob = await response.blob();
+  const limpiarNombre = (nombre) => {
+  return (
+    nombre
+      ?.replace(/[\\/:*?"<>|]/g, "")
+      .replace(/\s+/g, "_")
+      .substring(0, 60) || "tiktok_video"
+  );
+};
 
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = nombre;
-      link.click();
-    } catch {
-      alert("Error al descargar");
-    }
-  };
+  const descargarArchivo = async (url, nombre) => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+
+    const nombreLimpio = limpiarNombre(nombre);
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = nombreLimpio;
+    link.click();
+  } catch {
+    alert("❌ Error al descargar");
+  }
+};
 
   const reiniciar = () => {
     setOcultarBuscador(false);
