@@ -339,3 +339,19 @@ body {
 .lang-select:hover {
   background: rgba(255,255,255,0.2);
 }
+/* SELECT */
+.lang-select {
+  background: rgba(20, 20, 20, 0.9);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* OPCIONES DEL SELECT */
+.lang-select option {
+  background: #1a1a1a; /* 👈 CLAVE */
+  color: white;        /* 👈 CLAVE */
+}

@@ -13,9 +13,9 @@ function Navbar() {
           onChange={(e) => setIdioma(e.target.value)}
           className="lang-select"
         >
-          <option value="es">🇪🇸 ES</option>
-          <option value="en">🇺🇸 EN</option>
-          <option value="pt">🇧🇷 PT</option>
+          <option value="es">ESPAÑOL</option>
+          <option value="en">ENGLISH</option>
+          <option value="pt">PORTUGUESE</option>
         </select>
       </div>
     </nav>
