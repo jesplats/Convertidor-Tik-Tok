@@ -1,22 +1,25 @@
-function Buscador({
-  url,
-  validar,
-  limpiar,
-  clearVisible,
-  obtener,
-  disabled,
-  error,
-}) {
+import { useApp } from "../context/AppContext";
+
+function Buscador() {
+  const {
+    url,
+    validar,
+    limpiar,
+    clearVisible,
+    obtener,
+    disabled,
+    error,
+    textos,
+  } = useApp();
+
   return (
     <>
-      <h2 style={{ textAlign: "center" }}>
-        Descargar TikTok
-      </h2>
+      <h2>{textos.titulo}</h2>
 
       <div className="input-container">
         <input
           value={url}
-          placeholder="Pega el link de TikTok..."
+          placeholder={textos.placeholder}
           onChange={(e) => validar(e.target.value)}
         />
 
@@ -31,15 +34,11 @@ function Buscador({
           onClick={obtener}
           disabled={disabled}
         >
-          Download
+          {textos.descargar}
         </button>
       </div>
 
-      {error && (
-        <div className="error">
-          ❌ Ingresa un enlace válido
-        </div>
-      )}
+      {error && <div className="error">{textos.error}</div>}
     </>
   );
 }

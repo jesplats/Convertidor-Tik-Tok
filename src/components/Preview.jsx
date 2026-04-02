@@ -1,43 +1,54 @@
-import BotonesDescarga from "./BotonesDescarga";
+import { useApp } from "../context/AppContext";
 
-function Preview({
-  thumbnail,
-  username,
-  avatar,
-  titulo,
-  videoURL,
-  audioURL,
-  descargar,
-  reiniciar,
-}) {
+function Preview() {
+  const {
+    data,
+    descargarArchivo,
+    reiniciar,
+    textos,
+  } = useApp();
+
   return (
     <div>
       <div className="preview">
         <div
           className="video-bg"
-          style={{ backgroundImage: `url('${thumbnail}')` }}
+          style={{ backgroundImage: `url('${data.cover}')` }}
         ></div>
 
         <div className="content">
           <div className="user">
-            <img src={avatar} className="avatar" />
+            <img src={data.author.avatar} className="avatar" />
             <div>
-              <strong>@{username}</strong>
-              <p>{titulo}</p>
+              <strong>@{data.author.nickname}</strong>
+              <p>{data.title}</p>
             </div>
           </div>
 
-          <BotonesDescarga
-            videoURL={videoURL}
-            audioURL={audioURL}
-            titulo={titulo}
-            descargar={descargar}
-          />
+          <div className="acciones">
+            <button
+              className="btn video"
+              onClick={() =>
+                descargarArchivo(data.play, "video.mp4")
+              }
+            >
+              {textos.descargarVideo}
+            </button>
+
+            <button
+              className="btn audio"
+              onClick={() =>
+                descargarArchivo(data.music, "audio.mp3")
+              }
+            >
+              {textos.descargarAudio}
+            </button>
+          </div>
         </div>
       </div>
 
       <button className="volver" onClick={reiniciar}>
-        ⬅️ Volver al Inicio
+        {textos.volver}
       </button>
     </div>
   );

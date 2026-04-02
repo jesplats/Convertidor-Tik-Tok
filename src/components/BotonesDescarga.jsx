@@ -1,4 +1,4 @@
-function BotonesDescarga({ videoURL, audioURL, titulo, descargar }) {
+function BotonesDescarga({ videoURL, audioURL, titulo, descargar, textos }) {
   const limpiarNombre = (nombre) => {
     return nombre.replace(/[\\/:*?"<>|]/g, "").substring(0, 80);
   };
@@ -11,7 +11,7 @@ function BotonesDescarga({ videoURL, audioURL, titulo, descargar }) {
           descargar(videoURL, limpiarNombre(titulo) + ".mp4")
         }
       >
-        🎬 Descargar Video
+        {textos.descargarVideo}
       </button>
 
       <button
@@ -20,7 +20,7 @@ function BotonesDescarga({ videoURL, audioURL, titulo, descargar }) {
           descargar(audioURL, limpiarNombre(titulo) + ".mp3")
         }
       >
-        🎵 Descargar MP3
+        {textos.descargarAudio}
       </button>
     </div>
   );
