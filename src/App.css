@@ -189,3 +189,88 @@ body {
 .volver:hover {
   background: #222;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-container input {
+    width: 100%;
+  }
+
+  .clear {
+    width: 100%;
+  }
+
+  .download {
+    width: 100%;
+  }
+
+  .user {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 45px;
+    height: 45px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* 📱 Móviles pequeños */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  .clear,
+  .download {
+    width: 100%;
+  }
+
+  .user {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* 📱 Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+}
+
+/* 💻 Pantallas grandes */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 900px;
+  }
+}

@@ -37,7 +37,7 @@ function Preview({
       </div>
 
       <button className="volver" onClick={reiniciar}>
-        ⬅️ Descargar otro video
+        ⬅️ Volver al Inicio
       </button>
     </div>
   );
