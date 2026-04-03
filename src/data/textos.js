@@ -9,6 +9,7 @@ const textos = {
     volver: "⬅️ Descargar otro video",
     errorConexion: "❌ Error de conexión",
     errorContenido: "❌ No se pudo obtener el contenido",
+   
   },
   en: {
     titulo: "Download TikTok",
@@ -20,6 +21,7 @@ const textos = {
     volver: "⬅️ Download another video",
     errorConexion: "❌ Connection error",
     errorContenido: "❌ Could not fetch content",
+    
   },
   pt: {
     titulo: "Baixar TikTok",
@@ -31,6 +33,7 @@ const textos = {
     volver: "⬅️ Baixar outro vídeo",
     errorConexion: "❌ Erro de conexão",
     errorContenido: "❌ Não foi possível obter o conteúdo",
+    
   },
 };
 

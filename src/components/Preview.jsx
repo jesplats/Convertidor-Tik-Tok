@@ -1,7 +1,7 @@
 import { useApp } from "../context/AppContext";
 
 function Preview() {
-  const { data, descargarArchivo, reiniciar, textos, idioma } = useApp();
+  const { data, descargarArchivo, reiniciar, textos, idioma ,loading } = useApp();
 
   return (
     <div>

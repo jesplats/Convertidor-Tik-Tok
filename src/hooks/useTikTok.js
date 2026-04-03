@@ -8,6 +8,7 @@ export function useTikTok(textos, idioma) {
   const [disabled, setDisabled] = useState(true);
   const [ocultarBuscador, setOcultarBuscador] = useState(false);
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const validar = (valor) => {
     setUrl(valor);
@@ -30,22 +31,32 @@ export function useTikTok(textos, idioma) {
   };
 
   const obtener = async () => {
-    try {
-      const res = await fetch(
-        `https://tikwm.com/api/?url=${encodeURIComponent(url)}`
-      );
-      const json = await res.json();
+  try {
+    setLoading(true);
 
-      if (json.data) {
-        setData(json.data);
-        setOcultarBuscador(true);
-      } else {
-        alert(textos[idioma].errorContenido);
-      }
-    } catch {
-      alert(textos[idioma].errorConexion);
+    const res = await fetch(
+      `https://tikwm.com/api/?url=${encodeURIComponent(url)}`
+    );
+    const json = await res.json();
+
+    if (json.data) {
+      const tipo = json.data.images && json.data.images.length > 0 ? "imagen" : "video";
+
+      setData({
+        ...json.data,
+        tipo
+      });
+
+      setOcultarBuscador(true);
+    } else {
+      alert(textos[idioma].errorContenido);
     }
-  };
+  } catch {
+    alert(textos[idioma].errorConexion);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const limpiarNombre = (nombre) => {
   return (
@@ -90,5 +101,6 @@ export function useTikTok(textos, idioma) {
     obtener,
     descargarArchivo,
     reiniciar,
+    loading,
   };
 }

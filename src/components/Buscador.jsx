@@ -10,6 +10,7 @@ function Buscador() {
     disabled,
     error,
     textos,
+    loading, // 👈 agregado
   } = useApp();
 
   return (
@@ -17,25 +18,29 @@ function Buscador() {
       <h2>{textos.titulo}</h2>
 
       <div className="input-container">
+        {/* INPUT */}
         <input
           value={url}
           placeholder={textos.placeholder}
           onChange={(e) => validar(e.target.value)}
         />
 
-        {clearVisible && (
-          <button className="clear" onClick={limpiar}>
-            ✕
-          </button>
-        )}
+        {/* BOTONES */}
+        <div className="botones-container">
+          {clearVisible && (
+            <button className="clear" onClick={limpiar}>
+              ✕
+            </button>
+          )}
 
-        <button
-          className="download"
-          onClick={obtener}
-          disabled={disabled}
-        >
-          {textos.descargar}
-        </button>
+          <button
+            className={`download ${loading ? "loading" : ""}`}
+            onClick={obtener}
+            disabled={disabled || loading}
+          >
+            {loading ? textos.espera : textos.descargar}
+          </button>
+        </div>
       </div>
 
       {error && <div className="error">{textos.error}</div>}
