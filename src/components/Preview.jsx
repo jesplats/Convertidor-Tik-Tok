@@ -1,10 +1,13 @@
 import { useApp } from "../context/AppContext";
 
 function Preview() {
-  const { data, descargarArchivo, reiniciar, textos, idioma ,loading } = useApp();
+  const { data, descargarArchivo, reiniciar, textos } = useApp();
+
+  const esImagen = data.tipo === "imagen";
 
   return (
     <div>
+      {/* PREVIEW */}
       <div className="preview">
         <div
           className="video-bg"
@@ -20,24 +23,63 @@ function Preview() {
             </div>
           </div>
 
+          {/* ===== ACCIONES ===== */}
           <div className="acciones">
-            <button
-              className="btn video"
-              onClick={() =>
-                descargarArchivo(data.play, data.title + ".mp4")
-              }
-            >
-              {textos.descargarVideo}
-            </button>
 
-            <button
-              className="btn audio"
-              onClick={() =>
-                descargarArchivo(data.music, data.title + ".mp3")
-              }
-            >
-              {textos.descargarAudio}
-            </button>
+            {/* 🟢 CASO VIDEO */}
+            {!esImagen && (
+              <>
+                <button
+                  className="btn video"
+                  onClick={() =>
+                    descargarArchivo(
+                      data.play,
+                      data.title + ".mp4"
+                    )
+                  }
+                >
+                  {textos.descargarVideo}
+                </button>
+
+                <button
+                  className="btn audio"
+                  onClick={() =>
+                    descargarArchivo(
+                      data.music,
+                      data.title + ".mp3"
+                    )
+                  }
+                >
+                  {textos.descargarAudio}
+                </button>
+              </>
+            )}
+
+            {/* 🟣 CASO IMÁGENES */}
+            {esImagen && (
+              <div className="imagenes-container">
+                <p className="contador">
+                  📸 {textos.imagenes}: {data.images.length}
+                </p>
+
+                <div className="grid-imagenes">
+                  {data.images.map((img, index) => (
+                    <button
+                      key={index}
+                      className="btn imagen"
+                      onClick={() =>
+                        descargarArchivo(
+                          img,
+                          `${data.title}_img_${index + 1}.jpg`
+                        )
+                      }
+                    >
+                      {textos.descargarImagen} {index + 1}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

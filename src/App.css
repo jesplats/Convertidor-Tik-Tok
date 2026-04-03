@@ -371,4 +371,52 @@ body {
 .error {
   color: red;
   margin-top: 10px;
-}xx
+}
+/* ===== IMÁGENES ===== */
+.imagenes-container {
+  text-align: center;
+}
+
+.contador {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.grid-imagenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.imagen {
+  background: #ff0050;
+  color: white;
+}
+
+.imagen:hover {
+  background: #e60045;
+}
+
+.download.loading {
+  background: orange;
+  color: #000; /* 👈 ESTO ES CLAVE */
+  font-weight: bold;
+}
+
+.clear {
+  background: #2a2a2a;
+  color: #ccc;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.clear:hover {
+  background: #3a3a3a;
+  color: white;
+}

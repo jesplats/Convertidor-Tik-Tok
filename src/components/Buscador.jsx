@@ -10,7 +10,7 @@ function Buscador() {
     disabled,
     error,
     textos,
-    loading, // 👈 agregado
+    loading, // 
   } = useApp();
 
   return (
@@ -29,7 +29,7 @@ function Buscador() {
         <div className="botones-container">
           {clearVisible && (
             <button className="clear" onClick={limpiar}>
-              ✕
+               {textos.eliminar}
             </button>
           )}
 
